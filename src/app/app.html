@@ -7,11 +7,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<h1>Hello, {{ title() }}</h1>
-<p>Student: {{ student.name }}</p>
-<p>ID: {{ student.id }}</p>
 
-<p>Course: {{ course.name }}</p>
-<p>Code: {{ course.code }}</p>
+<div class="container">
+  @for (pokemon of pokemonTeam; track pokemon.pokedexNumber) {
+    <div class="pokemon-card">
+      <h3>{{pokemon.name}}</h3>
+      <p>Pokedex Number: {{pokemon.pokedexNumber}}</p>
+      <p>Type: {{pokemon.type}}</p>
+      <p>Generation: {{pokemon.generation}}</p>
+      @if (pokemon.megaEvolution) {
+        <p>Mega evolution: Yes</p>
+      }
+    </div>
+  } @empty {
+    <p>There are no pokemons on the list</p>
+  }
+
+</div>
+
+
 </body>
 </html>
