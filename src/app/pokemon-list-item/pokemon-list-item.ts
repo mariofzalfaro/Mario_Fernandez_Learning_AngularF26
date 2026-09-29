@@ -9,4 +9,6 @@ import {Pokemon} from '../shared/models/pokemon';
 })
 export class PokemonListItem {
   pokemon = input.required<Pokemon>();
+
 }
+

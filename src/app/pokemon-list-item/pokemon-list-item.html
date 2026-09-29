@@ -1,1 +1,40 @@
-<p>pokemon-list-item works!</p>
+<div class="pokemon-card">
+  <h2>{{ pokemon().name }}</h2>
+
+  <p>Pokedex Number: {{ pokemon().pokedexNumber }}</p>
+  <p>Generation: {{ pokemon().generation }}</p>
+
+  @switch (pokemon().type) {
+    @case ('Fire') {
+      <p>Type: Fire</p>
+    }
+    @case ('Water') {
+      <p>Type: Water</p>
+    }
+    @case ('Grass') {
+      <p>Type: Grass</p>
+    }
+    @case ('Electric') {
+      <p>Type: Electric</p>
+    }
+    @case ('Ghost') {
+      <p>Type: Ghost</p>
+    }
+    @case ('Ground') {
+      <p>Type: Ground</p>
+    }
+    @default {
+      <p>Type: Other</p>
+    }
+  }
+
+  @if (pokemon().megaEvolution) {
+    <p>Mega Evolution: Yes</p>
+  } @else {
+    <p>Mega Evolution: No</p>
+  }
+
+  <footer>
+    September 29, 2026
+  </footer>
+</div>
