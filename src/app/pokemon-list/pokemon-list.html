@@ -1,5 +1,5 @@
 @for (pokemon of pokemonTeam; track pokemon.pokedexNumber) {
-  <app-pokemon-list-item [pokemon]="pokemon" />
+  <app-pokemon-list-item [pokemon]="pokemon" (pokemonOpened)="onPokemonOpened($event)" />
 } @empty {
   <p>No Pokemon to show.</p>
 }

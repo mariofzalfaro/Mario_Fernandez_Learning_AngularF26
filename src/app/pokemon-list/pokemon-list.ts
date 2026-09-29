@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Pokemon} from '../shared/models/pokemon';
 import { PokemonListItem} from '../pokemon-list-item/pokemon-list-item';
+import {PokemonEvent} from '../shared/models/pokemon-event';
 
 @Component({
   imports: [PokemonListItem],
@@ -50,4 +51,9 @@ export class PokemonList {
       generation: 1
     }
   ]
+
+  onPokemonOpened(event: PokemonEvent): void {
+    console.log(event);
+  }
+
 }
