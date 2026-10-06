@@ -1,6 +1,6 @@
 import { Component, input, output } from '@angular/core';
 import {Pokemon} from '../shared/models/pokemon';
-import {PokemonEvent} from '../shared/models/pokemon-event';
+
 
 @Component({
   imports: [],
@@ -11,13 +11,10 @@ import {PokemonEvent} from '../shared/models/pokemon-event';
 export class PokemonListItem {
   pokemon = input.required<Pokemon>();
 
-  pokemonOpened = output<PokemonEvent>()
+  pokemonOpened = output<number>();
 
   openPokemon(): void {
-    this.pokemonOpened.emit({
-      id: this.pokemon().pokedexNumber,
-      action: 'opened'
-    });
+    this.pokemonOpened.emit(this.pokemon().pokedexNumber);
   }
 }
 
