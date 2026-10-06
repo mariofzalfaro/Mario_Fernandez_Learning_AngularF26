@@ -1,4 +1,4 @@
-import { Service, signal } from '@angular/core';
+import { Service, signal, computed, effect } from '@angular/core';
 import { Pokemon as PokemonModel} from '../shared/models/pokemon';
 
 @Service()
@@ -46,5 +46,19 @@ export class Pokemon {
   ])
 
   pokemonList = this.pokemonTeam.asReadonly();
+
+  megaPokemon = computed(() =>
+    this.pokemonTeam().filter(pokemon => pokemon.megaEvolution)
+  );
+
+  addPokemon(pokemon: PokemonModel): void {
+    this.pokemonTeam.update(list => [...list, pokemon]);
+  }
+
+  constructor() {
+    effect (() =>{
+      console.log('Pokemon count is now', this.pokemonTeam().length);
+    });
+  }
 
 }

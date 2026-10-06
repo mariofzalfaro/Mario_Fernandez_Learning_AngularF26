@@ -12,6 +12,9 @@ import { Pokemon as PokemonService } from '../services/pokemon';
 export class PokemonList {
   private pokemonService = inject(PokemonService);
   pokemonList = this.pokemonService.pokemonList;
+
+  megaPokemon = this.pokemonService.megaPokemon;
+
   onPokemonOpened(id: number): void {
     console.log(id);
   }

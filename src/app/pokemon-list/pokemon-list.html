@@ -1,7 +1,17 @@
+<h2> Pokemon Team </h2>
 @for (pokemon of pokemonList(); track pokemon.pokedexNumber) {
   <app-pokemon-list-item
     [pokemon]="pokemon"
     (pokemonOpened)="onPokemonOpened($event)" />
 } @empty {
   <p>No Pokemon to show.</p>
+}
+
+<h3>Pokemon with mega evolution: </h3>
+@for (pokemon of megaPokemon(); track pokemon.pokedexNumber) {
+
+  <p>{{pokemon.name}}</p>
+
+} @empty {
+  <p>No Pokemon with mega evolution</p>
 }
