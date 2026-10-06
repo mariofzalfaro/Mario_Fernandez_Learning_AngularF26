@@ -15,7 +15,10 @@ export class PokemonList {
 
   megaPokemon = this.pokemonService.megaPokemon;
 
+  megaPokemonCount = this.pokemonService.megaPokemonCount;
+
   onPokemonOpened(id: number): void {
     console.log(id);
+    this.pokemonService.removePokemon(id);
   }
 }

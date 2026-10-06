@@ -61,4 +61,12 @@ export class Pokemon {
     });
   }
 
+  removePokemon(id:number): void {
+    this.pokemonTeam.update(list => list.filter(pokemon => id !== pokemon.pokedexNumber ));
+}
+
+megaPokemonCount = computed(()=>
+  this.megaPokemon().length
+);
+
 }
