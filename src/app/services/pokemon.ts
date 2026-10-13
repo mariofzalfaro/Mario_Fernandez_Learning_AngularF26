@@ -1,8 +1,10 @@
-import { Service, signal, computed, effect, inject } from '@angular/core';
+import { Injectable, signal, computed, effect, inject } from '@angular/core';
 import { Pokemon as PokemonModel} from '../shared/models/pokemon';
 import { POKEMON_CONFIG } from '../shared/config/pokemon-config';
 
-@Service()
+@Injectable({
+  providedIn: 'root'
+})
 export class Pokemon {
 
   private config = inject(POKEMON_CONFIG);
