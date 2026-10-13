@@ -12,23 +12,12 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), provideClientHydration(),
   {
     provide: POKEMON_CONFIG,
-    useFactory: () => {
-      const isLocal = true;
-
-      if(isLocal) {
-      return{
-      apiBaseUrl: 'https://pokemon-dev.com/api',
-      pokemonName: 'Gengar'
-      };
-      } else {
-        return {
-          apiBaseUrl: 'https://pokemon-prod.com/api',
-          pokemonName: 'Gengar'
-        };
-      }
+    useValue: {
+      apiBaseUrl: 'https://pokemon.example.com/api',
+      defaultCategory: 'all'
     }
     },
-    /* Comment this provider to activate or deactivate the mock pokemon*/{
+    /* Comment this provider to activate or deactivate the mock Pokémon*/{
       provide: PokemonService,
       useClass: MockPokemonService
     }
