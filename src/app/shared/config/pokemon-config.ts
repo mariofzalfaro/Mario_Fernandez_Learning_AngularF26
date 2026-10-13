@@ -7,3 +7,4 @@ export interface PokemonConfig {
 
 export const POKEMON_CONFIG = new InjectionToken<PokemonConfig>('Pokemon.config');
 
+

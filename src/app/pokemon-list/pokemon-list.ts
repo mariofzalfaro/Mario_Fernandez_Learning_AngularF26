@@ -17,8 +17,12 @@ export class PokemonList {
 
   megaPokemonCount = this.pokemonService.megaPokemonCount;
 
+  apiBaseUrl = this.pokemonService.apiBaseUrl;
+
   onPokemonOpened(id: number): void {
     console.log(id);
     this.pokemonService.removePokemon(id);
   }
+
+
 }

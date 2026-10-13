@@ -1,8 +1,13 @@
-import { Service, signal, computed, effect } from '@angular/core';
+import { Service, signal, computed, effect, inject } from '@angular/core';
 import { Pokemon as PokemonModel} from '../shared/models/pokemon';
+import { POKEMON_CONFIG } from '../shared/config/pokemon-config';
 
 @Service()
 export class Pokemon {
+
+  private config = inject(POKEMON_CONFIG);
+  apiBaseUrl = this.config.apiBaseUrl;
+
   private pokemonTeam = signal<PokemonModel[]>([
     {
       name: 'Venusaur',
