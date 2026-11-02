@@ -1,8 +1,11 @@
-import { Injectable, signal, computed, effect } from '@angular/core';
+import {Injectable, signal, computed, effect, inject} from '@angular/core';
 import { Pokemon as PokemonModel } from '../shared/models/pokemon';
+import {POKEMON_CONFIG} from '../shared/config/pokemon-config';
 
 @Injectable()
 export class MockPokemonService {
+  private config = inject(POKEMON_CONFIG);
+  apiBaseUrl = this.config.apiBaseUrl;
   private pokemonTeam = signal<PokemonModel[]>([
     {
       name: 'Sceptile',
@@ -28,8 +31,6 @@ export class MockPokemonService {
   ]);
 
   pokemonList = this.pokemonTeam.asReadonly();
-
-  apiBaseUrl = 'https://mock-pokemon.example.com/api';
 
   megaPokemon = computed(() =>
     this.pokemonTeam().filter(pokemon => pokemon.megaEvolution)

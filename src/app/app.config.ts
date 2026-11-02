@@ -9,7 +9,7 @@ import { MockPokemonService } from './services/mock-pokemon';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes), provideClientHydration(),
+    provideRouter(routes),
   {
     provide: POKEMON_CONFIG,
     useValue: {
