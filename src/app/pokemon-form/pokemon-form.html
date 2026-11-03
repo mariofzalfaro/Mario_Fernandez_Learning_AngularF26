@@ -1,0 +1,36 @@
+<h1>ADD POKEMON</h1>
+<form [formGroup]="pokeForm" (ngSubmit)="onSubmit()">
+  <label>Name:</label>
+  <input type="text" formControlName="name">
+  @if (pokeForm.controls.name.hasError('required') && pokeForm.controls.name.touched) {
+    <p>Name needed.</p>
+  }
+    @if (pokeForm.controls.name.hasError('minlength') && pokeForm.controls.name.touched) {
+      <p>Name must have at least 4 characters.</p>
+    }
+  <label>Pokedex Number:</label>
+  <input type="number" formControlName="pokedexNumber">
+  @if (pokeForm.controls.pokedexNumber.hasError('required') && pokeForm.controls.pokedexNumber.touched) {
+    <p>Pokedex number is required.</p>
+  }
+  <label>Type:</label>
+  <select formControlName="type">
+    <option value="Grass">Grass</option>
+    <option value="Fire">Fire</option>
+    <option value="Water">Water</option>
+    <option value="Electric">Electric</option>
+    <option value="Ghost">Ghost</option>
+    <option value="Normal">Normal</option>
+    <option value="Poison">Poison</option>
+    <option value="Ground">Ground</option>
+    <option value="Rock">Rock</option>
+  </select>
+  <label>Generation:</label>
+  <input type="number" formControlName="generation">
+  <label>Mega Evolution:</label>
+  <input type="checkbox" formControlName="megaEvolution">
+  <button type="submit" [disabled]="pokeForm.invalid">
+    Add Pokemon
+  </button>
+
+</form>

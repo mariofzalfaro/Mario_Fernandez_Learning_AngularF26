@@ -1,6 +1,7 @@
 import { Injectable, signal, computed, effect, inject } from '@angular/core';
 import { Pokemon as PokemonModel} from '../shared/models/pokemon';
 import { POKEMON_CONFIG } from '../shared/config/pokemon-config';
+import {AbstractControl, ValidationErrors, ValidatorFn, ɵFormGroupRawValue, ɵTypedOrUntyped} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -58,7 +59,19 @@ export class Pokemon {
     this.pokemonTeam().filter(pokemon => pokemon.megaEvolution)
   );
 
-  addPokemon(pokemon: PokemonModel): void {
+  addPokemon(pokemon: ɵTypedOrUntyped<ɵNullableFormControls<{
+    name: (string | (((control: AbstractControl) => (ValidationErrors | null)) | ValidatorFn)[])[];
+    pokedexNumber: (number | ((control: AbstractControl) => (ValidationErrors | null))[])[];
+    type: string[];
+    generation: number[];
+    megaEvolution: boolean[]
+  }>, ɵFormGroupRawValue<ɵNullableFormControls<{
+    name: (string | (((control: AbstractControl) => (ValidationErrors | null)) | ValidatorFn)[])[];
+    pokedexNumber: (number | ((control: AbstractControl) => (ValidationErrors | null))[])[];
+    type: string[];
+    generation: number[];
+    megaEvolution: boolean[]
+  }>>, any>): void {
     this.pokemonTeam.update(list => [...list, pokemon]);
   }
 
