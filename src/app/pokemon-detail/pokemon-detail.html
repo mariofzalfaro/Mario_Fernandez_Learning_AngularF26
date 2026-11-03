@@ -1,0 +1,16 @@
+<h2>Details of the Pokemon</h2>
+@if (pokemon(); as pokemon) {
+  <h2>{{pokemon.name}}</h2>
+    <p>Pokedex Number: {{ pokemon.pokedexNumber }}</p>
+    <p>Type: {{ pokemon.type }}</p>
+    <p>Generation: {{pokemon.generation}}</p>
+  @if (pokemon.megaEvolution) {
+    <p>Megaevolution: Yes</p>
+  } @else {
+    <p>MegaEvolution: No</p>
+  }
+}
+@else {
+ <p>No pokemon on the list</p>
+}
+
