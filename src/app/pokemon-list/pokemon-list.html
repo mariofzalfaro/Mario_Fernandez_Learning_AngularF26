@@ -3,6 +3,7 @@
   <app-pokemon-list-item
     [pokemon]="pokemon"
     (pokemonOpened)="onPokemonOpened($event)" />
+    <a [routerLink]="['/pokemon', pokemon.pokedexNumber]">Details</a>
 } @empty {
   <p>No Pokemon to show.</p>
 }
@@ -21,5 +22,3 @@
 
 <h3>URL</h3>
 <p>Data source - Placeholder: {{apiBaseUrl}}</p>
-
-//comment to do a proper commit
