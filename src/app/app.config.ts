@@ -17,10 +17,10 @@ export const appConfig: ApplicationConfig = {
       defaultCategory: 'all'
     }
     },
-    /* Comment this provider to activate or deactivate the mock Pokémon*/{
+    /* Comment this provider to activate or deactivate the mock Pokémon{
       provide: PokemonService,
       useClass: MockPokemonService
-    }
+    }*/
   ]
 };
 
