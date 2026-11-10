@@ -1,4 +1,5 @@
 <h2> Pokemon Team </h2>
+<a routerLink="/pokemon/add">Add pokemon</a>
 @for (pokemon of pokemonList(); track pokemon.pokedexNumber) {
   <app-pokemon-list-item
     [pokemon]="pokemon"
