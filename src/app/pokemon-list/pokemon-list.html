@@ -4,6 +4,7 @@
     [pokemon]="pokemon"
     (pokemonOpened)="onPokemonOpened($event)" />
     <a [routerLink]="['/pokemon', pokemon.pokedexNumber]">Details</a>
+    <button type="button" [routerLink]="['/pokemon/edit', pokemon.pokedexNumber]">Edit pokemon</button>
 } @empty {
   <p>No Pokemon to show.</p>
 }

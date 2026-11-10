@@ -1,4 +1,8 @@
-<h1>ADD POKEMON</h1>
+@if (id()) {
+  <h1>EDIT POKEMON</h1>
+} @else {
+  <h1>ADD POKEMON</h1>
+}
 <form [formGroup]="pokeForm" (ngSubmit)="onSubmit()">
   <label>Name:</label>
   <input type="text" formControlName="name">
@@ -30,7 +34,7 @@
   <label>Mega Evolution:</label>
   <input type="checkbox" formControlName="megaEvolution">
   <button type="submit" [disabled]="pokeForm.invalid">
-    Add Pokemon
+    {{id() ? 'Save Changes' : 'Add'}}
   </button>
 
 </form>
