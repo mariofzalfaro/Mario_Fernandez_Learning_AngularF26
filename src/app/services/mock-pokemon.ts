@@ -11,21 +11,21 @@ export class MockPokemonService {
       name: 'Sceptile',
       pokedexNumber: 254,
       type: 'Grass',
-      generation: 3,
+      generation: '3',
       megaEvolution: true
     },
     {
       name: 'Blaziken',
       pokedexNumber: 257,
       type: 'Fire',
-      generation: 3,
+      generation: '3',
       megaEvolution: true
     },
     {
       name: 'Swampert',
       pokedexNumber: 260,
       type: 'Water',
-      generation: 3,
+      generation: '3',
       megaEvolution: true
     }
   ]);

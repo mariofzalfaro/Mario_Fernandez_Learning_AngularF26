@@ -22,7 +22,7 @@ export class PokemonForm {
     name: ['', [Validators.required, Validators.minLength(4)]],
     pokedexNumber: [1, [Validators.required, pokedexRange]],
     type: ['Grass'],
-    generation: [1],
+    generation: ['i'],
     megaEvolution: [false]
   }, {validators: pokedexMatchesGeneration});
 
@@ -59,7 +59,7 @@ export class PokemonForm {
           name: '',
           pokedexNumber: 1,
           type: 'Grass',
-          generation: 1,
+          generation: 'i',
           megaEvolution: false
         });
       }

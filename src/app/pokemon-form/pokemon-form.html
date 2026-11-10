@@ -30,7 +30,17 @@
     <option value="Rock">Rock</option>
   </select>
   <label>Generation:</label>
-  <input type="number" formControlName="generation">
+  <select formControlName="Generation">
+    <option value="i">I</option>
+    <option value="ii">II</option>
+    <option value="iii">III</option>
+    <option value="iv">IV</option>
+    <option value="v">V</option>
+    <option value="vi">VI</option>
+    <option value="vii">VII</option>
+    <option value="viii">VIII</option>
+    <option value="ix">IX</option>
+  </select>
   <label>Mega Evolution:</label>
   <input type="checkbox" formControlName="megaEvolution">
   @if (pokeForm.hasError('pokedexOutOfGeneration') && (pokeForm.controls.pokedexNumber.touched || pokeForm.controls.generation.touched)) {
