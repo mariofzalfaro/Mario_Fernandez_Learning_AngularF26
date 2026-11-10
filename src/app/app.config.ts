@@ -13,7 +13,7 @@ export const appConfig: ApplicationConfig = {
   {
     provide: POKEMON_CONFIG,
     useValue: {
-      apiBaseUrl: 'https://pokemon.example.com/api',
+      apiBaseUrl: 'https://pokeapi.co/api/v2/',
       defaultCategory: 'all'
     }
     },
