@@ -14,8 +14,8 @@
     }
   <label>Pokedex Number:</label>
   <input type="number" formControlName="pokedexNumber">
-  @if (pokeForm.controls.pokedexNumber.hasError('required') && pokeForm.controls.pokedexNumber.touched) {
-    <p>Pokedex number is required.</p>
+  @if (pokeForm.controls.pokedexNumber.hasError('pokedexOutOfRange') && pokeForm.controls.pokedexNumber.touched) {
+    <p>Pokedex number must be a number between 1 and 1025.</p>
   }
   <label>Type:</label>
   <select formControlName="type">
@@ -33,6 +33,9 @@
   <input type="number" formControlName="generation">
   <label>Mega Evolution:</label>
   <input type="checkbox" formControlName="megaEvolution">
+  @if (pokeForm.hasError('pokedexOutOfGeneration') && (pokeForm.controls.pokedexNumber.touched || pokeForm.controls.generation.touched)) {
+    <p>The Pokedex number does not belong to the selected generation.</p>
+  }
   <button type="submit" [disabled]="pokeForm.invalid">
     {{id() ? 'Save Changes' : 'Add'}}
   </button>

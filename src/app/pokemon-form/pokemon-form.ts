@@ -3,7 +3,10 @@ import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Pokemon as pokemonService} from '../services/pokemon';
 import {Pokemon as PokemonModel} from '../shared/models/pokemon';
 import { Router } from '@angular/router';
-  @Component({
+import { pokedexRange} from '../validators/pokemon-validators';
+import { pokedexMatchesGeneration } from '../validators/pkdx-generation-validator'
+
+@Component({
   imports: [ReactiveFormsModule],
   selector: 'app-pokemon-form',
   styleUrl: './pokemon-form.css',
@@ -17,11 +20,11 @@ export class PokemonForm {
 
     pokeForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(4)]],
-    pokedexNumber: [1, [Validators.required]],
+    pokedexNumber: [1, [Validators.required, pokedexRange]],
     type: ['Grass'],
     generation: [1],
     megaEvolution: [false]
-  })
+  }, {validators: pokedexMatchesGeneration});
 
   constructor() {
     effect(() => {
