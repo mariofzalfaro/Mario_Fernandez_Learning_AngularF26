@@ -1,4 +1,4 @@
-import {Component, inject, input, effect} from '@angular/core';
+import {Component, inject, input, effect, viewChild, ElementRef, afterNextRender} from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import { PokemonService } from '../services/pokemon';
 import {Pokemon as PokemonModel} from '../shared/models/pokemon';
@@ -17,7 +17,7 @@ export class PokemonForm {
   private fb = inject(FormBuilder);
   private pokemonService = inject(PokemonService);
   private router = inject(Router);
-
+  nInput = viewChild<ElementRef<HTMLInputElement>>('nInput');
     pokeForm = this.fb.nonNullable.group({
     name: ['', [Validators.required, Validators.minLength(4)]],
     id: [1, [Validators.required, pokedexRange]],
@@ -27,6 +27,11 @@ export class PokemonForm {
   } /*, {validators: pokedexMatchesGeneration}*/ );
 
   constructor() {
+    // The code goe here because it needs the real DOM input, it needs to run once after Angular renders it.
+    afterNextRender(() => {
+      this.nInput()?.nativeElement.focus();
+    });
+
     effect(() => {
       const pokemonId = this.id();
       if (pokemonId) {
@@ -36,6 +41,8 @@ export class PokemonForm {
         }
       }
     });
+
+
   }
 
 
