@@ -1,12 +1,16 @@
 import { Component, input, output } from '@angular/core';
 import {Pokemon} from '../shared/models/pokemon';
 import {DecimalPipe, TitleCasePipe} from '@angular/common';
+import {PokemonNamePipe} from '../pokemon-name-pipe';
+import {GenerationPipe} from '../generation-pipe';
 
 
 @Component({
   imports: [
     TitleCasePipe,
-    DecimalPipe
+    DecimalPipe,
+    PokemonNamePipe,
+    GenerationPipe
   ],
   selector: 'app-pokemon-list-item',
   styleUrl: './pokemon-list-item.css',

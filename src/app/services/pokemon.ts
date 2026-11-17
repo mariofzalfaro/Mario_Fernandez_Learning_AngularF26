@@ -13,7 +13,7 @@ export class PokemonService {
 
   pokemonResource = httpResource<PokemonModel[]>(() =>({
     url: this.apiBaseUrl + "/pokemon",
-    params: {limit:100, offset: 0}
+    params: {limit:152, offset: 0}
   }), {
   defaultValue: [],
   parse: (response) => (response as PokemonListResponse).results.map(item => ({
