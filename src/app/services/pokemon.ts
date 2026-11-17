@@ -1,97 +1,66 @@
 import { Injectable, signal, computed, effect, inject } from '@angular/core';
-import { Pokemon as PokemonModel} from '../shared/models/pokemon';
+import {PokemonListResponse, Pokemon as PokemonModel} from '../shared/models/pokemon';
 import { POKEMON_CONFIG } from '../shared/config/pokemon-config';
-import { PokemonApiDetail } from '../shared/models/pokemon-api';
+import {httpResource} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class Pokemon {
+export class PokemonService {
 
   private config = inject(POKEMON_CONFIG);
   apiBaseUrl = this.config.apiBaseUrl;
 
-  private mapPokemon(api: PokemonApiDetail, generation: string): PokemonModel  {
-    const typeName = api.types[0].type.name;
+  pokemonResource = httpResource<PokemonModel[]>(() =>({
+    url: this.apiBaseUrl + "/pokemon",
+    params: {limit:100, offset: 0}
+  }), {
+  defaultValue: [],
+  parse: (response) => (response as PokemonListResponse).results.map(item => ({
+  name: item.name,
+  id: Number(item.url.split('/').at(-2))
+}))
+});
 
-    return {
-      name: api.name.charAt(0).toUpperCase() + api.name.slice(1),
-      pokedexNumber: api.id,
-      type: (typeName.charAt(0).toUpperCase() + typeName.slice(1)) as PokemonModel['type'],
-      generation,
-      megaEvolution: false,
-    };
-  }
+  private pokemonTeam = this.pokemonResource.value;
 
-  private pokemonTeam = signal<PokemonModel[]>([
-    {
-      name: 'Venusaur',
-      pokedexNumber: 3,
-      type: 'Grass',
-      generation: 'i',
-      megaEvolution: true
-    },
-    {
-      name: 'Arcanine',
-      pokedexNumber: 59,
-      type: 'Fire',
-      generation: 'i'
-    },
-    {
-      name: 'Rhyperior',
-      pokedexNumber: 464,
-      type: 'Ground',
-      generation: 'i'
-    },
-    {
-      name: 'Gyarados',
-      pokedexNumber: 130,
-      type: 'Water',
-      generation: 'i',
-      megaEvolution: true
-    },
-    {
-      name: 'Gengar',
-      pokedexNumber: 94,
-      type: 'Ghost',
-      generation: 'i',
-      megaEvolution: true
-    },
-    {
-      name: 'Raichu',
-      pokedexNumber: 26,
-      type: 'Electric',
-      generation: 'i'
-    }
-  ])
+  pokemonList = computed(() => this.pokemonResource.error() ? [] : this.pokemonTeam());
+  isLoading = this.pokemonResource.isLoading;
+  error = this.pokemonResource.error;
 
-  pokemonList = this.pokemonTeam.asReadonly();
 
-  megaPokemon = computed(() =>
-    this.pokemonTeam().filter(pokemon => pokemon.megaEvolution)
-  );
+  /*
+    pokemonList = this.pokemonTeam.asReadonly();
 
-  addPokemon(pokemon: PokemonModel): void {
-    this.pokemonTeam.update(list => [...list, pokemon]);
-  }
-
-  updatePokemon(updatedPokemon: PokemonModel): void {
-    this.pokemonTeam.update(list => list.map(pokemon => pokemon.pokedexNumber === updatedPokemon.pokedexNumber ? updatedPokemon : pokemon)
+    /*megaPokemon = computed(() =>
+      this.pokemonTeam().filter(pokemon => pokemon.megaEvolution)
     );
-  }
+  */
 
   constructor() {
     effect (() =>{
       console.log('Pokemon count is now', this.pokemonTeam().length);
     });
   }
+    addPokemon(pokemon: PokemonModel): void {
+      this.pokemonTeam.update(list => [...list, pokemon]);
+    }
 
-  removePokemon(id:number): void {
-    this.pokemonTeam.update(list => list.filter(pokemon => id !== pokemon.pokedexNumber ));
-}
+    updatePokemon(updatedPokemon: PokemonModel): void {
+      this.pokemonTeam.update(list => list.map(pokemon => pokemon.id === updatedPokemon.id ? updatedPokemon : pokemon)
+      );
+    }
 
-megaPokemonCount = computed(()=>
-  this.megaPokemon().length
-);
+
+    removePokemon(id:number): void {
+      this.pokemonTeam.update(list => list.filter(pokemon => id !== pokemon.id ));
+  }
+
+  /*
+  megaPokemonCount = computed(()=>
+    this.megaPokemon().length
+  );
+
+    */
 
 }

@@ -14,7 +14,7 @@ export class PokemonListItem {
   pokemonOpened = output<number>();
 
   openPokemon(): void {
-    this.pokemonOpened.emit(this.pokemon().pokedexNumber);
+    this.pokemonOpened.emit(this.pokemon().id);
   }
 }
 

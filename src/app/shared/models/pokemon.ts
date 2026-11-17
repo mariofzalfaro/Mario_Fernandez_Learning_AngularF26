@@ -1,9 +1,12 @@
 export interface Pokemon {
   name:string;
-  pokedexNumber:number;
-  type:'Fire'| 'Water' | 'Grass' | 'Electric'| 'Ghost' | 'Normal' | 'Poison' | 'Psychic' |
-    'Ground' | 'Rock' | 'Dragon' | 'Flying' | 'Bug' | 'Dark' | 'Fighting' | 'Steel' | 'Fairy' | 'Ice';
-  generation:string;
-  megaEvolution?:boolean;
+  id:number;
+  // types: { type: { name: string } }[];
+  /*generation:string;
+  megaEvolution?:boolean;*/
+}
+
+export interface PokemonListResponse {
+  results: { name: string; url: string }[];
 }
 

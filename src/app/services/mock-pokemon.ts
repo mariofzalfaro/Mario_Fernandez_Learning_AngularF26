@@ -1,4 +1,4 @@
-import {Injectable, signal, computed, effect, inject} from '@angular/core';
+/*import {Injectable, signal, computed, effect, inject} from '@angular/core';
 import { Pokemon as PokemonModel } from '../shared/models/pokemon';
 import {POKEMON_CONFIG} from '../shared/config/pokemon-config';
 
@@ -9,21 +9,21 @@ export class MockPokemonService {
   private pokemonTeam = signal<PokemonModel[]>([
     {
       name: 'Sceptile',
-      pokedexNumber: 254,
+      id: 254,
       type: 'Grass',
       generation: '3',
       megaEvolution: true
     },
     {
       name: 'Blaziken',
-      pokedexNumber: 257,
+      id: 257,
       type: 'Fire',
       generation: '3',
       megaEvolution: true
     },
     {
       name: 'Swampert',
-      pokedexNumber: 260,
+      id: 260,
       type: 'Water',
       generation: '3',
       megaEvolution: true
@@ -46,8 +46,9 @@ export class MockPokemonService {
 
   removePokemon(id: number): void {
     this.pokemonTeam.update(list =>
-      list.filter(pokemon => id !== pokemon.pokedexNumber)
+      list.filter(pokemon => id !== pokemon.id)
     );
   }
 
 }
+*/

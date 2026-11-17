@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import {Pokemon} from '../shared/models/pokemon';
 import { PokemonListItem} from '../pokemon-list-item/pokemon-list-item';
-import { Pokemon as PokemonService } from '../services/pokemon';
+import { PokemonService } from '../services/pokemon';
 import {RouterLink} from '@angular/router';
 
 @Component({
@@ -13,17 +13,14 @@ import {RouterLink} from '@angular/router';
 export class PokemonList {
   private pokemonService = inject(PokemonService);
   pokemonList = this.pokemonService.pokemonList;
-
-  megaPokemon = this.pokemonService.megaPokemon;
-
-  megaPokemonCount = this.pokemonService.megaPokemonCount;
-
+  isLoading = this.pokemonService.isLoading;
+  error = this.pokemonService.error;
   apiBaseUrl = this.pokemonService.apiBaseUrl;
-
+/*
   onPokemonOpened(id: number): void {
     console.log(id);
     this.pokemonService.removePokemon(id);
   }
-
+*/
 
 }

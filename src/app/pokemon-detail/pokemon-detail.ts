@@ -1,5 +1,5 @@
 import {Component, computed, inject, input} from '@angular/core';
-import {Pokemon} from '../services/pokemon';
+import {PokemonService} from '../services/pokemon';
 
 @Component({
   imports: [],
@@ -8,9 +8,9 @@ import {Pokemon} from '../services/pokemon';
   templateUrl: './pokemon-detail.html',
 })
 export class PokemonDetail {
-private Pokemon = inject(Pokemon);
+private pokemonService = inject(PokemonService);
 id = input.required<string>();
 pokemon = computed(() =>
-this.Pokemon.pokemonList().find(pokemon => pokemon.pokedexNumber === Number(this.id())
+this.pokemonService.pokemonList().find(pokemon => pokemon.id === Number(this.id())
 ));
 }

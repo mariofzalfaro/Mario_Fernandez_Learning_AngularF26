@@ -1,6 +1,6 @@
 import {Component, inject, input, effect} from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
-import {Pokemon as pokemonService} from '../services/pokemon';
+import { PokemonService } from '../services/pokemon';
 import {Pokemon as PokemonModel} from '../shared/models/pokemon';
 import { Router } from '@angular/router';
 import { pokedexRange} from '../validators/pokemon-validators';
@@ -15,22 +15,22 @@ import { pokedexMatchesGeneration } from '../validators/pkdx-generation-validato
 export class PokemonForm {
   id = input<string>();
   private fb = inject(FormBuilder);
-  private pokemonService = inject(pokemonService);
+  private pokemonService = inject(PokemonService);
   private router = inject(Router);
 
-    pokeForm = this.fb.group({
+    pokeForm = this.fb.nonNullable.group({
     name: ['', [Validators.required, Validators.minLength(4)]],
-    pokedexNumber: [1, [Validators.required, pokedexRange]],
-    type: ['Grass'],
-    generation: ['i'],
-    megaEvolution: [false]
-  }, {validators: pokedexMatchesGeneration});
+    id: [1, [Validators.required, pokedexRange]],
+    // types: [[{type: {name: 'Grass'}}], Validators.required],
+    /*generation: ['i'],
+    megaEvolution: [false]*/
+  } /*, {validators: pokedexMatchesGeneration}*/ );
 
   constructor() {
     effect(() => {
       const pokemonId = this.id();
       if (pokemonId) {
-        const pokemon = this.pokemonService.pokemonList().find(pokemon => pokemon.pokedexNumber === Number(pokemonId));
+        const pokemon = this.pokemonService.pokemonList().find(pokemon => pokemon.id === Number(pokemonId));
         if (pokemon) {
           this.pokeForm.patchValue(pokemon);
         }
@@ -44,11 +44,11 @@ export class PokemonForm {
       const value = this.pokeForm.getRawValue();
       const id = this.id();
       const pokemon: PokemonModel = {
-      name: value.name!,
-      pokedexNumber: id ? Number (id) : value.pokedexNumber!,
-      type: value.type as PokemonModel['type'],
-      generation: value.generation!,
-      megaEvolution: value.megaEvolution!
+      name: value.name,
+      id: id ? Number (id) : value.id,
+      // types: value.types,
+      /*generation: value.generation!,
+      megaEvolution: value.megaEvolution!*/
       };
       if (id) {
       this.pokemonService.updatePokemon(pokemon);
@@ -57,10 +57,10 @@ export class PokemonForm {
         this.pokemonService.addPokemon(pokemon);
         this.pokeForm.reset({
           name: '',
-          pokedexNumber: 1,
-          type: 'Grass',
-          generation: 'i',
-          megaEvolution: false
+          id: 1,
+          // types: [],
+          /*generation: 'i',
+          megaEvolution: false*/
         });
       }
   }

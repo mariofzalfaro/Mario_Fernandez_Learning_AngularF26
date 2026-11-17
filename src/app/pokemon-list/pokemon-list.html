@@ -1,26 +1,32 @@
 <h2> Pokemon Team </h2>
 <a routerLink="/pokemon/add">Add pokemon</a>
-@for (pokemon of pokemonList(); track pokemon.pokedexNumber) {
+@if(isLoading()) {
+  <p>Loading...</p>
+} @else if (error()) {
+  <p>Error</p>
+} @else {
+@for (pokemon of pokemonList(); track pokemon.id) {
   <app-pokemon-list-item
-    [pokemon]="pokemon"
-    (pokemonOpened)="onPokemonOpened($event)" />
-    <a [routerLink]="['/pokemon', pokemon.pokedexNumber]">Details</a>
-    <button type="button" [routerLink]="['/pokemon/edit', pokemon.pokedexNumber]">Edit pokemon</button>
+    [pokemon]="pokemon"/>
+    <!--(pokemonOpened)="onPokemonOpened($event)"-->
+    <a [routerLink]="['/pokemon', pokemon.id]">Details</a>
+    <button type="button" [routerLink]="['/pokemon/edit', pokemon.id]">Edit pokemon</button>
 } @empty {
   <p>No Pokemon to show.</p>
 }
-
-<h3>Pokemon with mega evolution: </h3>
-@for (pokemon of megaPokemon(); track pokemon.pokedexNumber) {
-
-  <p>{{pokemon.name}}</p>
-
-} @empty {
-  <p>No Pokemon with mega evolution</p>
 }
 
-<h3>MegaPokemon Count</h3>
-<p>Total pokemon with mega evolution {{megaPokemonCount()}}</p>
+<!--<h3>Pokemon with mega evolution: </h3>-->
+<!--@for (pokemon of megaPokemon(); track pokemon.id) {-->
+
+<!--  <p>{{pokemon.name}}</p>-->
+
+<!--} @empty {-->
+<!--  <p>No Pokemon with mega evolution</p>-->
+<!--}-->
+<!--}-->
+<!--<h3>MegaPokemon Count</h3>-->
+<!--<p>Total pokemon with mega evolution {{megaPokemonCount()}}</p>-->
 
 <h3>URL</h3>
 <p>Data source - Placeholder: {{apiBaseUrl}}</p>

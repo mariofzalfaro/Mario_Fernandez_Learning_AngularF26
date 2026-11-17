@@ -3,8 +3,6 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { POKEMON_CONFIG } from './shared/config/pokemon-config';
-import { Pokemon as PokemonService } from './services/pokemon';
-import { MockPokemonService } from './services/mock-pokemon';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,7 +11,7 @@ export const appConfig: ApplicationConfig = {
   {
     provide: POKEMON_CONFIG,
     useValue: {
-      apiBaseUrl: 'https://pokeapi.co/api/v2/',
+      apiBaseUrl: 'https://pokeapi.co/api/v2',
       defaultCategory: 'all'
     }
     },
