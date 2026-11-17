@@ -51,7 +51,6 @@ export class PokemonService {
       );
     }
 
-
     removePokemon(id:number): void {
       this.pokemonTeam.update(list => list.filter(pokemon => id !== pokemon.id ));
   }

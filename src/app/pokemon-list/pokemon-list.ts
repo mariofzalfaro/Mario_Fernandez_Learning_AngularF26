@@ -16,6 +16,9 @@ export class PokemonList {
   isLoading = this.pokemonService.isLoading;
   error = this.pokemonService.error;
   apiBaseUrl = this.pokemonService.apiBaseUrl;
+  deletePokemon(id: number): void {
+    this.pokemonService.removePokemon(id);
+  }
 /*
   onPokemonOpened(id: number): void {
     console.log(id);
