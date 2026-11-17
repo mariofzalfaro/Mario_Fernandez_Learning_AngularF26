@@ -1,9 +1,13 @@
 import { Component, input, output } from '@angular/core';
 import {Pokemon} from '../shared/models/pokemon';
+import {DecimalPipe, TitleCasePipe} from '@angular/common';
 
 
 @Component({
-  imports: [],
+  imports: [
+    TitleCasePipe,
+    DecimalPipe
+  ],
   selector: 'app-pokemon-list-item',
   styleUrl: './pokemon-list-item.css',
   templateUrl: './pokemon-list-item.html',

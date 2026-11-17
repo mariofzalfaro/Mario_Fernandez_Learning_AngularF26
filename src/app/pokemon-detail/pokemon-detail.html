@@ -1,6 +1,6 @@
 <h2>Details of the Pokemon</h2>
 @if (pokemon(); as pokemon) {
-  <h2>{{pokemon.name}}</h2>
+  <h2>{{pokemon.name | uppercase }}</h2>
     <p>Pokedex Number: {{ pokemon.id }}</p>
 <!--    <p>Type: {{ pokemon.type }}</p>-->
 <!--    <p>Generation: {{pokemon.generation}}</p>-->

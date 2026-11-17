@@ -1,8 +1,11 @@
 import {Component, computed, inject, input} from '@angular/core';
 import {PokemonService} from '../services/pokemon';
+import {UpperCasePipe} from '@angular/common';
 
 @Component({
-  imports: [],
+  imports: [
+    UpperCasePipe
+  ],
   selector: 'app-pokemon-detail',
   styleUrl: './pokemon-detail.css',
   templateUrl: './pokemon-detail.html',
