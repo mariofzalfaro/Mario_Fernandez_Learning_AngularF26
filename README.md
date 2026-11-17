@@ -36,3 +36,12 @@ chunk-CuZT6Qam.js    | not-found        | 314 bytes |               314 bytes
 
 
 The detail, add, edit and the 404-page load different from the main page, so it only downloads when there are visited for the first time so it saves resources. The landing page will always load first, that won't change
+
+
+
+LIFECYCLE
+
+1. Basically what happens is that the constructor runs before the id is assigned, so after the system sees that there is no id, it gives the error NG8118. 
+
+2. The action of navigating away from the page, the destroy component destroys it in order to let the ngOnInit run next time the detail is opened
+
