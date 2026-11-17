@@ -5,12 +5,13 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { POKEMON_CONFIG } from './shared/config/pokemon-config';
 import {loadingInterceptor} from './loading-interceptor';
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
+import {errorInterceptor} from './error-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes, withComponentInputBinding()),
-    provideHttpClient(withInterceptors([loadingInterceptor])),
+    provideHttpClient(withInterceptors([loadingInterceptor, errorInterceptor])),
   {
     provide: POKEMON_CONFIG,
     useValue: {

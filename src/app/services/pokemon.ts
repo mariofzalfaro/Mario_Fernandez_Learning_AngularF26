@@ -39,7 +39,7 @@ export class PokemonService {
 
   constructor() {
     effect (() =>{
-      console.log('Pokemon count is now', this.pokemonTeam().length);
+      console.log('Pokemon count is now', this.pokemonList().length);
     });
   }
     addPokemon(pokemon: PokemonModel): void {

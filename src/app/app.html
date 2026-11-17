@@ -1,4 +1,9 @@
-
+@if (errorService.message(); as message) {
+  <div class="error-banner">
+    <p>{{ message }}</p>
+    <button type="button" (click)="errorService.clear()">Dismiss</button>
+  </div>
+}
   <nav>
     <button type="button" (click)="toggleGuard.toggleGuard()">
       {{ toggleGuard.guardEnabled() ? 'Unlock' : 'Lock' }}
