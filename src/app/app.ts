@@ -3,6 +3,7 @@ import { Pokemon } from './shared/models/pokemon';
 import {PokemonList} from './pokemon-list/pokemon-list';
 import {RouterOutlet} from '@angular/router';
 import {ToggleGuard} from './services/toggle-guard';
+import {LoadingService} from './services/loading';
 
 @Component({
   imports: [RouterOutlet],
@@ -12,6 +13,7 @@ import {ToggleGuard} from './services/toggle-guard';
 })
 export class App {
   toggleGuard = inject(ToggleGuard);
+  loadingService = inject(LoadingService);
   protected readonly title = signal('My First app');
 
   student: {name:string} & {id:string} =
