@@ -1,4 +1,4 @@
-<div class="pokemon-card" (click)="openPokemon()">
+<div class="pokemon-card" (click)="openPokemon()" appHighlight>
   <h2>{{ pokemon().name | titlecase | pokemonName }}</h2>
   <p>Pokedex Number: {{ pokemon().id | number:'3.0-0'}}</p>
   <p> {{ pokemon().id | generation:'short' }}</p>

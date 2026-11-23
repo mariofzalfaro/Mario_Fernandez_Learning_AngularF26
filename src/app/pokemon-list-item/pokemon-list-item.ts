@@ -3,6 +3,7 @@ import {Pokemon} from '../shared/models/pokemon';
 import {DecimalPipe, TitleCasePipe} from '@angular/common';
 import {PokemonNamePipe} from '../pokemon-name-pipe';
 import {GenerationPipe} from '../generation-pipe';
+import {Highlight} from '../directives/highlight';
 
 
 @Component({
@@ -10,7 +11,8 @@ import {GenerationPipe} from '../generation-pipe';
     TitleCasePipe,
     DecimalPipe,
     PokemonNamePipe,
-    GenerationPipe
+    GenerationPipe,
+    Highlight
   ],
   selector: 'app-pokemon-list-item',
   styleUrl: './pokemon-list-item.css',

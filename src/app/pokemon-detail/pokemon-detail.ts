@@ -1,10 +1,12 @@
 import {Component, computed, inject, input, OnDestroy, OnInit} from '@angular/core';
 import {PokemonService} from '../services/pokemon';
 import {UpperCasePipe} from '@angular/common';
+import {Highlight} from '../directives/highlight';
 
 @Component({
   imports: [
-    UpperCasePipe
+    UpperCasePipe,
+    Highlight
   ],
   selector: 'app-pokemon-detail',
   styleUrl: './pokemon-detail.css',
