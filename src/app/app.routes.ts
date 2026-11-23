@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
 import {PokemonList} from './pokemon-list/pokemon-list';
-import {PokemonDetail} from './pokemon-detail/pokemon-detail';
-import {PokemonForm} from './pokemon-form/pokemon-form';
 import {editGuard} from './guards/edit-guard';
 
 export const routes: Routes = [
