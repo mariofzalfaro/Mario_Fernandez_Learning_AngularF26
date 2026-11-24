@@ -14,8 +14,7 @@
   <p>Error</p>
 } @else {
 @for (pokemon of sortedList(); track pokemon.id) {
-  <app-pokemon-list-item
-    [pokemon]="pokemon"/>
+  <app-pokemon-list-item [pokemon]="pokemon" highlightColor="#f0e446"/>
     <!--(pokemonOpened)="onPokemonOpened($event)"-->
     <a [routerLink]="['/pokemon', pokemon.id]">Details</a>
     <button type="button" [routerLink]="['/pokemon/edit', pokemon.id]">Edit pokemon</button>

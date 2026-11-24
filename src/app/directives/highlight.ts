@@ -5,7 +5,7 @@ import { Directive, input, signal } from '@angular/core';
   host: {
     '(mouseenter)': 'active.set(true)',
     '(mouseleave)': 'active.set(false)',
-    '[style.backgroundColor]': "active() ? (color() || '#e0543f') : ''",
+    '[style.backgroundColor]': "active() ? (color() || '#f0e446') : ''",
   },
 })
 export class Highlight {
