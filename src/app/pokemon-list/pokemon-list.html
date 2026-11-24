@@ -12,7 +12,7 @@
     <!--(pokemonOpened)="onPokemonOpened($event)"-->
     <a [routerLink]="['/pokemon', pokemon.id]">Details</a>
     <button type="button" [routerLink]="['/pokemon/edit', pokemon.id]">Edit pokemon</button>
-    <button type="button" (click)="deletePokemon(pokemon.id)">Delete</button>
+    <button type="button" appConfirm="Do you want to delete this pokemon?" (confirmed)="deletePokemon(pokemon.id)">Delete</button>
 } @empty {
   <p>No Pokemon to show.</p>
 }

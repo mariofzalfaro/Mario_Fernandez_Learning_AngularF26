@@ -3,9 +3,10 @@ import {Pokemon} from '../shared/models/pokemon';
 import { PokemonListItem} from '../pokemon-list-item/pokemon-list-item';
 import { PokemonService } from '../services/pokemon';
 import {RouterLink} from '@angular/router';
+import {Confirm} from '../directives/confirm';
 
 @Component({
-  imports: [PokemonListItem, RouterLink],
+  imports: [PokemonListItem, RouterLink, Confirm],
   selector: 'app-pokemon-list',
   styleUrl: './pokemon-list.css',
   templateUrl: './pokemon-list.html',
