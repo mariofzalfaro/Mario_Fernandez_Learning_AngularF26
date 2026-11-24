@@ -1,12 +1,19 @@
 <h2> Pokemon Team </h2>
 <h4>Changes are only saved on this device</h4>
 <a routerLink="/pokemon/add">Add pokemon</a>
+<p> </p>
+<label>Sort by:</label>
+<select #sort [value]="savedService.sortOrder()" (change)="savedService.sortOrder.set(sort.value)">
+  <option value="number">Default order</option>
+  <option value="name">Name (A-Z)</option>
+</select>
+
 @if(isLoading()) {
   <p>Loading...</p>
 } @else if (error()) {
   <p>Error</p>
 } @else {
-@for (pokemon of pokemonList(); track pokemon.id) {
+@for (pokemon of sortedList(); track pokemon.id) {
   <app-pokemon-list-item
     [pokemon]="pokemon"/>
     <!--(pokemonOpened)="onPokemonOpened($event)"-->
@@ -16,6 +23,13 @@
 } @empty {
   <p>No Pokemon to show.</p>
 }
+
+  <h2>Saved Pokemon</h2>
+  @for (pokemon of savedPokemon(); track pokemon.id) {
+    <p><a [routerLink]="['/pokemon', pokemon.id]">{{ pokemon.name }}</a></p>
+  } @empty {
+    <p>Not saved pokemon to show</p>
+  }
 }
 
 <!--<h3>Pokemon with mega evolution: </h3>-->

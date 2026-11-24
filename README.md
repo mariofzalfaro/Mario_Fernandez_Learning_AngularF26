@@ -45,3 +45,6 @@ LIFECYCLE
 
 2. The action of navigating away from the page, the destroy component destroys it in order to let the ngOnInit run next time the detail is opened
 
+LOCAL STORAGE
+I stored the pokemon's IDs of the saved pokemons, and the preference, in this case the sorting type (either name or default) because is data that the user selects manually and the preference is because it is cool to see the pokemons on alphabetical order.
+Sensitive information (like passwords or private keys) must never be on the local storage because it can be read on the page which compromises the web's security.

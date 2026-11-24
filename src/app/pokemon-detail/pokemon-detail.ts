@@ -2,6 +2,7 @@ import {Component, computed, inject, input, OnDestroy, OnInit} from '@angular/co
 import {PokemonService} from '../services/pokemon';
 import {UpperCasePipe} from '@angular/common';
 import {Highlight} from '../directives/highlight';
+import {SavedService} from '../services/saved-service';
 
 @Component({
   imports: [
@@ -14,6 +15,7 @@ import {Highlight} from '../directives/highlight';
 })
 export class PokemonDetail {
 private pokemonService = inject(PokemonService);
+savedService = inject(SavedService);
 id = input.required<string>();
 pokemon = computed(() =>
 this.pokemonService.pokemonList().find(pokemon => pokemon.id === Number(this.id())

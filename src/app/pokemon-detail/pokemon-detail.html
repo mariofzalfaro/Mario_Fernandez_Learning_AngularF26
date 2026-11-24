@@ -2,6 +2,9 @@
 @if (pokemon(); as pokemon) {
   <h2 appHighlight="#f0e446">{{pokemon.name | uppercase }}</h2>
     <p>Pokedex Number: {{ pokemon.id }}</p>
+  <button type="button" (click)="savedService.toggle(pokemon.id)">
+    {{ savedService.isSaved(pokemon.id) ? 'Unsave' : 'Save' }}
+  </button>
 <!--    <p>Type: {{ pokemon.type }}</p>-->
 <!--    <p>Generation: {{pokemon.generation}}</p>-->
 <!--  @if (pokemon.megaEvolution) {-->
